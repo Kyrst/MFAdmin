@@ -1,8 +1,3 @@
-.DS_Store
-/node_modules
-/public/.sass-cache
-/public/css
-/public/js
-/public/libs
 /vendor
-composer.lock
+/node_modules
+.env

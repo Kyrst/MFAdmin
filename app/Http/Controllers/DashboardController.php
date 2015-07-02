@@ -1,79 +1,29 @@
-<?php namespace App\Http\Controllers;
+<?php
+namespace App\Http\Controllers;
 
-class DashboardController extends ApplicationController
+use App\Helpers\Nordea;
+
+class DashboardController extends \PXLBros\PXLFramework\Http\Controllers\DashboardController
 {
-	public $layout = 'dashboard';
-
-	private $breadcrumb_items = [];
-
 	function __construct()
 	{
-		$this->beforeFilter('@filterRequests', ['on' => 'get']);
-	}
+		parent::__construct();
 
-	public function filterRequests($route, $request)
-	{
-		$user = \Auth::user();
-
-		if ( $user === NULL && $route->getActionName() !== 'App\Http\Controllers\Dashboard\AuthController@signIn' )
-		{
-			return \Redirect::route('sign-in');
-		}
-
-		$this->assign('post_max_size', \App\Helpers\Core\File::getBytes(ini_get('post_max_size')), CoreController::SECTION_JS);
-		$this->assign('upload_max_filesize', \App\Helpers\Core\File::getBytes(ini_get('upload_max_filesize')), CoreController::SECTION_JS);
+		//$this->home_route = route('home');
 	}
 
 	public function afterLayoutInit()
 	{
-		$this->initMenu();
-		$this->initBreadcrumb();
+		/*if ( $this->is_ajax === false )
+		{
+			$this->initMenu();
+		}*/
+
+		Nordea::readTotalINBas();
+
 		$this->initAvailableYears();
 
 		parent::afterLayoutInit();
-	}
-
-	public function beforeDisplay()
-	{
-		$breadcrumb_view = view('layouts/partials/dashboard/breadcrumb');
-		$breadcrumb_view->breadcrumb_items = $this->breadcrumb_items;
-		$breadcrumb_view->num_breadcrumb_items = count($this->breadcrumb_items);
-
-		$this->assign('breadcrumb', $breadcrumb_view->render(), CoreController::SECTION_LAYOUT);
-
-		parent::beforeDisplay();
-	}
-
-	private function initMenu()
-	{
-		$menu_items =
-		[
-			[
-				'text' => 'Dashboard',
-				'icon' => 'dashboard',
-				'link' => \URL::route('dashboard'),
-				'pages' => ['dashboard/home/home']
-			]
-		];
-
-		$this->assign('menu_items', $menu_items, CoreController::SECTION_LAYOUT);
-	}
-
-	private function initBreadcrumb()
-	{
-		if ( $this->current_page !== 'dashboard/home/home' )
-		{
-			$this->addBreadcrumbItem('Dashboard', \URL::route('dashboard'));
-		}
-	}
-
-	protected function addBreadcrumbItem($text, $link = NULL)
-	{
-		$this->breadcrumb_items[] =
-		[
-			'text' => $text,
-			'link' => $link
-		];
 	}
 
 	private function initAvailableYears()
@@ -81,5 +31,69 @@ class DashboardController extends ApplicationController
 		$available_years = \DB::select('SELECT DISTINCT YEAR(invoice_date) AS year FROM customers ORDER BY year DESC');
 
 		$this->assign('available_years', $available_years);
+	}
+
+	/*private function initMenu()
+	{
+		$menu_items =
+		[
+			[
+				'text' => 'Dashboard',
+				'icon' => 'dashboard',
+				'link' => route('home'),
+				'pages' => ['dashboard/home/home']
+			],
+			[
+				'text' => 'Policies',
+				'icon' => 'file text outline',
+				'link' => route('policies'),
+				'pages' => ['dashboard/policies/policies']
+			],
+			[
+				'text' => 'Classifieds',
+				'icon' => 'travel',
+				'link' => route('classifieds'),
+				'pages' => ['dashboard/classifieds/classifieds']
+			]
+		];
+
+		if ( $this->user->is('Administrator') )
+		{
+			$menu_items[] =
+			[
+				'text' => 'Calendar',
+				'icon' => 'calendar',
+				'link' => route('calendar'),
+				'pages' => ['dashboard/calendar/calendar']
+			];
+
+			$menu_items[] =
+			[
+				'text' => 'News',
+				'icon' => 'newspaper',
+				'link' => route('news'),
+				'pages' => ['dashboard/news/news']
+			];
+
+			$menu_items[] =
+			[
+				'text' => 'Users',
+				'icon' => 'user',
+				'link' => route('users'),
+				'pages' => ['dashboard/users/users', 'dashboard/users/user']
+			];
+		}
+
+		$this->assign('menu_items', $menu_items, self::SECTION_LAYOUT);
+	}*/
+
+	public function signOut()
+	{
+		if ( $this->user !== NULL )
+		{
+			\Auth::logout();
+		}
+
+		return \Redirect::to($this->base_url);
 	}
 }

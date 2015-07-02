@@ -1,0 +1,36 @@
+@import '../../../public/libs/bower/sass-mixins/mixins';
+
+$segment-loading-and-error-height: 58px;
+
+.ui.segment.loading-container
+{
+	&.is-loading
+	{
+		font-size: .9em;
+	}
+
+	&.is-loading,
+	&.error,
+	&.no-data
+	{
+		min-height: $segment-loading-and-error-height;
+	}
+
+	&.error,
+	&.no-data
+	{
+		padding: 0;
+		text-align: center;
+		line-height: $segment-loading-and-error-height;
+		color: #AAA;
+		font-size: .9em;
+	}
+}
+
+.no-segment-data
+{
+	display: block;
+	text-align: center;
+	color: #BBB;
+	line-height: $segment-loading-and-error-height - 3px;
+}

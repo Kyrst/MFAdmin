@@ -1,8 +1,7 @@
-<?php namespace App\Models;
+<?php
+namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Customer extends Model
+class Customer extends \Illuminate\Database\Eloquent\Model
 {
 	public $table = 'customers';
 }

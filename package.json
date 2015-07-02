@@ -1,13 +1,20 @@
 {
-  "devDependencies":
-  {
-    "gulp": "*",
-    "gulp-compass": "*",
-    "gulp-jshint": "*",
-    "jshint-stylish": "*",
-    "gulp-imagemin": "*",
-    "gulp-uglify": "*",
-    "gulp-util": "*",
-    "gulp-concat": "*"
-  }
+	"private": true,
+	"devDependencies":
+	{
+		"gulp": "*",
+		"gulp-compass": "*",
+		"gulp-jshint": "*",
+		"jshint-stylish": "*",
+		"gulp-imagemin": "*",
+		"gulp-uglify": "*",
+		"gulp-util": "*",
+		"gulp-concat": "*",
+		"gulp-rename": "*",
+		"gulp-if": "*",
+		"gulp-scss-lint": "*",
+		"gulp-cached": "*",
+		"gulp-sass": "*",
+		"run-sequence": "*"
+	}
 }

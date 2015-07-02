@@ -1,16 +1,11 @@
-$core = new Core();
-
-$core.init(
+var $pxl = new pxlCore(
 {
-	csrf_token: encrypted_csrf_token,
-	uri:
+	debug: debug,
+	notification:
 	{
-		base_url: base_url
-	},
-	message:
-	{
-		engine: new Core_UI_Message_Engine_SweetAlert()
+		engines:
+		[
+			'SweetAlert'
+		]
 	}
 });
-
-$core.afterDomInit();
