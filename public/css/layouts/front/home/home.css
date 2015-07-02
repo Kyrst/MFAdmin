@@ -1,0 +1,14 @@
+#sign-in-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 302px;
+  margin-top: -151px;
+  margin-left: -200px;
+  padding: 1em 1.3em;
+}
+#sign-in-container h1 {
+  margin: 0 0 16px;
+  text-align: center;
+}

@@ -1,0 +1,28 @@
+{
+  "name": "pxlCore",
+  "version": "1.0.72",
+  "homepage": "https://github.com/PXLbros/pxlCore",
+  "main": "pxlcore.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src"
+  ],
+  "dependencies": {
+    "jquery": "latest",
+    "jquery-legacy": "jquery#1",
+    "normalize-css": "latest",
+    "sass-mediaqueries": "latest",
+    "sass-mixins": "latest"
+  },
+  "_release": "1.0.72",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.72",
+    "commit": "26b46172f4205101069235d85e1be966fdb941e4"
+  },
+  "_source": "git://github.com/PXLbros/PXLCore.git",
+  "_target": "*",
+  "_originalSource": "pxlcore"
+}

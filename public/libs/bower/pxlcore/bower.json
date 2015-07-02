@@ -1,0 +1,21 @@
+{
+  "name": "pxlCore",
+  "version": "1.0.72",
+  "homepage": "https://github.com/PXLbros/pxlCore",
+  "main": "pxlcore.js",
+  "ignore":
+  [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src"
+  ],
+  "dependencies":
+  {
+    "jquery": "latest",
+    "jquery-legacy": "jquery#1",
+    "normalize-css": "latest",
+    "sass-mediaqueries": "latest",
+    "sass-mixins": "latest"
+  }
+}

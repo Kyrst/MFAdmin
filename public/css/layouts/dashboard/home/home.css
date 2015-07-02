@@ -1,0 +1,9 @@
+#year-form {
+  position: absolute;
+  top: 8px;
+  right: 13px;
+  z-index: 2;
+}
+#year-form .selection.ui.dropdown {
+  padding: .64em 1.1em;
+}

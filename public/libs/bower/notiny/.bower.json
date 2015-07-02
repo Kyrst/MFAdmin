@@ -1,0 +1,14 @@
+{
+  "name": "notiny",
+  "homepage": "https://github.com/andreyviktorov/notiny",
+  "version": "0.0.4",
+  "_release": "0.0.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.4",
+    "commit": "6ea193d8ce24812fee97ac533d3a25d71634b174"
+  },
+  "_source": "git://github.com/andreyviktorov/notiny.git",
+  "_target": "*",
+  "_originalSource": "notiny"
+}

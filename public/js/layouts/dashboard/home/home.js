@@ -1,0 +1,1 @@
+$('#tabs').find('.item').tab();
